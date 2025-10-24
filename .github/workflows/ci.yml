@@ -1,0 +1,20 @@
+name: Mon CI  # Nom du workflow (il apparaîtra dans l’onglet "Actions" sur GitHub)
+
+on:
+  push:                      # L'événement qui déclenche le workflow
+    branches: [ main, feature-readme ]   # Le workflow s'exécute sur ces deux branches
+
+jobs:
+  Construction:              # Nom du job
+    runs-on: ubuntu-latest   # Machine virtuelle utilisée
+
+    steps:
+      - name: Récupération du code
+        uses: actions/checkout@v4        # Étape 1 : cloner le dépôt
+
+      # Étape 2 : exécuter des commandes pour vérifier le contenu
+      - name: Vérification du contenu
+        run: |                            # Le symbole "|" permet d’écrire plusieurs lignes
+          echo "Félicitations, Pipeline CI déclenché avec réussite 🎉"
+          ls -l
+
